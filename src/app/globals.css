@@ -5,6 +5,8 @@
   --foreground: #000000;
   --primary: hsl(340, 87%, 48%);
   --primary-hover: hsl(340, 87%, 58%);
+  --text-forground: hsl(220, 1%, 45%);
+  --text-primary: hsl(0, 0%, 0%);
 }
 
 html,

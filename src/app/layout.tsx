@@ -50,7 +50,7 @@ export default function RootLayout({
             flex: 1,
             margin: "0.5rem 0.5rem 0.5rem 0",
             backgroundColor: "white",
-            padding: '2.5rem',
+            padding: '2.5rem 2.5rem 0 2.5rem',
             borderRadius: '1.25rem',
           })}>
             {children}

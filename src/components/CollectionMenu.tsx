@@ -5,7 +5,6 @@ import Button from "./ui/Button"
 import AddCollectionIcon from "@/Icons/AddCollectionIcon"
 import { useState } from "react"
 import { CheveronDownIcon, SortIcon } from "@/Icons"
-
 const tabs = [
   { name: 'All Files', },
   { name: 'Photos' },
@@ -15,7 +14,7 @@ const tabs = [
 const CollectionMenu = () => {
   const [activeTab, setActiveTab] = useState(tabs[0])
   return (
-    <div className={css({ display: 'flex', justifyContent: 'space-between', alignItems: 'center' })}>
+    <div className={css({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBlockEnd: 4 })}>
       <div className={css({ display: 'flex', alignItems: 'center', gap: '2', padding: "11px 0" })}>
         <IconButton
           visual='outline'
