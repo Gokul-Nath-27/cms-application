@@ -9,12 +9,18 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
+  font-family: var(--font-gilroy-regular), sans-serif;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2 {
+  font-family: var(--font-gilroy-bold), sans-serif;
+}
+
+p {
+  font-family: var(--font-gilroy-regular), sans-serif; /* Ensure paragraphs use regular */
 }

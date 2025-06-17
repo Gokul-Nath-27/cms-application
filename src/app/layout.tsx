@@ -1,18 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import { css } from "../../styled-system/css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+export const gilroyBold = localFont({
+  src: '../fonts/Gilroy-Bold.ttf',
+  display: 'swap',
+  variable: '--font-gilroy-bold',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+export const gilroyMedium = localFont({
+  src: '../fonts/Gilroy-Medium.ttf',
+  display: 'swap',
+  variable: '--font-gilroy-medium',
 });
+
+export const gilroyRegular = localFont({
+  src: '../fonts/Gilroy-Regular.ttf',
+  display: 'swap',
+  variable: '--font-gilroy-regular',
+});
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,8 +34,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${gilroyBold.variable} ${gilroyMedium.variable} ${gilroyRegular.variable}`}
+    >
+      <body>
         <div
           className={css({
             display: "flex",
