@@ -1,8 +1,10 @@
-const mediaTypes = {
+export const mediaTypes = {
   video: 'Video',
   photo: 'Photo',
   doc: 'Document',
 };
+
+export type MediaType = keyof typeof mediaTypes;
 
 export interface CollectionItem {
   title: string;
@@ -11,38 +13,68 @@ export interface CollectionItem {
   thumbnailUrl: string;
 }
 
-export const generateMockCollections = (count: number): CollectionItem[] => {
-  const types = Object.keys(mediaTypes) as Array<keyof typeof mediaTypes>;
-  const thumbnailUrlPrefix = 'https://picsum.photos/seed/';
-
-  return Array.from({ length: count }, (_, i) => {
-    const randomTypeKey = types[Math.floor(Math.random() * types.length)];
-    const randomItems = Math.floor(Math.random() * 20) + 5;
-    const thumbnailSeed = Math.random().toString(36).substring(7);
-
-    let title: string;
-    switch (randomTypeKey) {
-      case 'video':
-        title = `Event Video ${i + 1}`;
-        break;
-      case 'photo':
-        title = `Album ${i + 1}`;
-        break;
-      case 'doc':
-        title = `Project Docs ${i + 1}`;
-        break;
-      default:
-        throw new Error('Invalid collection type generated');
-    }
-
-    return {
-      title,
-      type: randomTypeKey,
-      numberOfItems: randomItems,
-      thumbnailUrl: `${thumbnailUrlPrefix}${thumbnailSeed}/300/200`,
-    };
-  });
-};
+export const mockCollections: CollectionItem[] = [
+  {
+    title: "Event Video 1",
+    type: "video",
+    numberOfItems: 12, // Fixed number
+    thumbnailUrl: "https://picsum.photos/seed/staticvideo1/300/200", // Fixed seed
+  },
+  {
+    title: "Album 1",
+    type: "photo",
+    numberOfItems: 25,
+    thumbnailUrl: "https://picsum.photos/seed/staticphoto1/300/200",
+  },
+  {
+    title: "Project Docs 1",
+    type: "doc",
+    numberOfItems: 8,
+    thumbnailUrl: "https://picsum.photos/seed/staticdoc1/300/200",
+  },
+  {
+    title: "Event Video 2",
+    type: "video",
+    numberOfItems: 18,
+    thumbnailUrl: "https://picsum.photos/seed/staticvideo2/300/200",
+  },
+  {
+    title: "Album 2",
+    type: "photo",
+    numberOfItems: 30,
+    thumbnailUrl: "https://picsum.photos/seed/staticphoto2/300/200",
+  },
+  {
+    title: "Project Docs 2",
+    type: "doc",
+    numberOfItems: 15,
+    thumbnailUrl: "https://picsum.photos/seed/staticdoc2/300/200",
+  },
+  {
+    title: "Event Video 3",
+    type: "video",
+    numberOfItems: 9,
+    thumbnailUrl: "https://picsum.photos/seed/staticvideo3/300/200",
+  },
+  {
+    title: "Album 3",
+    type: "photo",
+    numberOfItems: 20,
+    thumbnailUrl: "https://picsum.photos/seed/staticphoto3/300/200",
+  },
+  {
+    title: "Project Docs 3",
+    type: "doc",
+    numberOfItems: 10,
+    thumbnailUrl: "https://picsum.photos/seed/staticdoc3/300/200",
+  },
+  {
+    title: "Event Video 4",
+    type: "video",
+    numberOfItems: 14,
+    thumbnailUrl: "https://picsum.photos/seed/staticvideo4/300/200",
+  },
+];
 
 export type GroupedCollections = {
   [key in keyof typeof mediaTypes]?: CollectionItem[];
@@ -58,5 +90,4 @@ export const groupCollectionsByType = (collections: CollectionItem[]): GroupedCo
   }, {} as GroupedCollections);
 };
 
-export const mockCollections: CollectionItem[] = generateMockCollections(10);
 export const groupedMockCollections: GroupedCollections = groupCollectionsByType(mockCollections);

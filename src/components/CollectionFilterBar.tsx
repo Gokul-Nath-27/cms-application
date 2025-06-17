@@ -3,16 +3,13 @@ import IconButton from "./ui/IconButton"
 import { css } from "../../styled-system/css"
 import Button from "./ui/Button"
 import AddCollectionIcon from "@/Icons/AddCollectionIcon"
-import { useState } from "react"
 import { CheveronDownIcon, SortIcon } from "@/Icons"
-const tabs = [
-  { name: 'All Files', },
-  { name: 'Photos' },
-  { name: 'Videos' },
-  { name: 'Documents' },
-]
-const CollectionMenu = () => {
-  const [activeTab, setActiveTab] = useState(tabs[0])
+import { useTabActions, useActiveTab, tabs } from "@/store/tabNavigation"
+
+const CollectionFilterBar = () => {
+  const activeTab = useActiveTab()
+  const { setActiveTab } = useTabActions()
+
   return (
     <div className={css({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBlockEnd: 4 })}>
       <div className={css({ display: 'flex', alignItems: 'center', gap: '2', padding: "11px 0" })}>
@@ -64,4 +61,4 @@ const SortMenu = () => {
   );
 };
 
-export default CollectionMenu
+export default CollectionFilterBar

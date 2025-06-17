@@ -47,7 +47,7 @@ const Card = ({ item }: { item: CollectionItem }) => {
           blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 200))}`}
         />
       </div>
-      <div className={css({ display: "flex", flexDirection: "column", gap: "2px" })}>
+      <div className={css({ display: "flex", flexDirection: "column", gap: "2px", paddingInlineStart: '1.5' })}>
         <div className={css({ fontSize: "14px", fontWeight: "bold", cursor: 'pointer', _hover: { textDecoration: 'underline' } })}>{item.title}</div>
         <div className={css({ fontSize: "12px", color: 'var(--text-forground)' })}>{`${item.numberOfItems} items`}</div>
       </div>

@@ -1,6 +1,7 @@
 import { AgentIcon, SearchIcon } from '@/Icons'
 import { css } from '../../styled-system/css'
 import IconButton from './ui/IconButton'
+import SearchInput from './SearchInput'
 
 const SearchBar = () => {
   return (
@@ -13,20 +14,7 @@ const SearchBar = () => {
         borderRadius: "lg",
         flex: 1,
       })}>
-        <input
-          type="text"
-          placeholder="Type here to search..."
-          className={css({
-            width: 'full',
-            p: '3',
-            paddingInlineStart: '10',
-            fontSize: 'sm',
-            border: 'none',
-            _focus: {
-              "outline": "none",
-            }
-          })}
-        />
+        <SearchInput />
         <SearchIcon
           className={css({
             position: 'absolute',
