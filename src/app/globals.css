@@ -1,8 +1,10 @@
 @layer reset, base, tokens, recipes, utilities;
 
 :root {
-  --background: #efefef;
+  --background: hsl(0, 0%, 94%);
   --foreground: #000000;
+  --primary: hsl(340, 87%, 48%);
+  --primary-hover: hsl(340, 87%, 58%);
 }
 
 html,
@@ -14,6 +16,7 @@ body {
   background: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+;
 }
 
 h1,

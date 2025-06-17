@@ -18,7 +18,10 @@ export const button = cva({
   variants: {
     visual: {
       solid: {},
-      outline: { border: '1px solid #DBDBDB', padding: '.8125rem' }
+      outline: {
+        border: '1px solid #DBDBDB', padding: '.8125rem',
+        borderRadius: '.625rem',
+      }
     },
   },
   defaultVariants: {
