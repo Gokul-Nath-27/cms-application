@@ -1,6 +1,6 @@
 import { IconProps } from "@/types/IconProps";
 
-const AddCollection: React.FC<IconProps> = ({ size = 14, color = "#717274", ...props }) => (
+const AddCollectionIcon: React.FC<IconProps> = ({ size = 14, color = "#717274", ...props }) => (
   <svg
     width={size}
     height={size}
@@ -22,4 +22,4 @@ const AddCollection: React.FC<IconProps> = ({ size = 14, color = "#717274", ...p
     </defs>
   </svg>
 );
-export default AddCollection;
+export default AddCollectionIcon;

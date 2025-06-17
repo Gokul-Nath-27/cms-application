@@ -1,4 +1,5 @@
 import { css } from "../../styled-system/css"
+import Sidebar from "@/components/Sidebar"
 
 export default function Home() {
   return (
@@ -8,11 +9,7 @@ export default function Home() {
         height: "100vh",
       })}
     >
-      <nav className={css({ display: "flex", flexDirection: "column", width: "60px" })}>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-      </nav>
+      <Sidebar />
       <main className={css({
         flex: 1,
         margin: "0.5rem 0.5rem 0.5rem 0",
