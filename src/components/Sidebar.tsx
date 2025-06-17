@@ -10,6 +10,7 @@ import {
   MenuIcon,
   CollectionIcon,
 } from "@/Icons";
+import { NotFoundLink } from "@/components/NotFoundLink";
 
 const Sidebar = () => {
   return (
@@ -22,21 +23,40 @@ const Sidebar = () => {
         alignItems: "center",
         gap: "2.5rem",
         paddingBlock: "4rem 2.5rem ",
-      })}>
+      })}
+    >
       <nav className={css({ display: "flex", flexDirection: "column", gap: "2.5rem" })}>
-        <IconButton visual="solid" icon={<SearchIcon />} />
+        <NotFoundLink>
+          <IconButton visual="solid" icon={<SearchIcon />} />
+        </NotFoundLink>
+
+        {/* ✅ Only valid route */}
         <IconButton visual="solid" icon={<CollectionIcon />} />
-        <IconButton visual="solid" icon={<StackIcon />} />
-        <IconButton visual="solid" icon={<MessageIcon />} />
-        <IconButton visual="solid" icon={<AnalyticsIcon />} />
-        <IconButton visual="solid" icon={<PaperRocketIcon />} />
-      </nav >
+
+        <NotFoundLink>
+          <IconButton visual="solid" icon={<StackIcon />} />
+        </NotFoundLink>
+        <NotFoundLink>
+          <IconButton visual="solid" icon={<MessageIcon />} />
+        </NotFoundLink>
+        <NotFoundLink>
+          <IconButton visual="solid" icon={<AnalyticsIcon />} />
+        </NotFoundLink>
+        <NotFoundLink>
+          <IconButton visual="solid" icon={<PaperRocketIcon />} />
+        </NotFoundLink>
+      </nav>
+
       <div className={css({ display: "flex", flexDirection: "column", gap: "1.875rem" })}>
-        <IconButton visual="solid" icon={<AgentIcon />} />
-        <IconButton visual="solid" icon={<MenuIcon />} />
+        <NotFoundLink>
+          <IconButton visual="solid" icon={<AgentIcon />} />
+        </NotFoundLink>
+        <NotFoundLink>
+          <IconButton visual="solid" icon={<MenuIcon />} />
+        </NotFoundLink>
       </div>
     </div>
   );
 };
 
-export default Sidebar
+export default Sidebar;
