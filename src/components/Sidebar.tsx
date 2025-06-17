@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { css } from "../../styled-system/css";
 import IconButton from "./ui/IconButton";
 import {
@@ -30,8 +31,9 @@ const Sidebar = () => {
           <IconButton visual="solid" icon={<SearchIcon />} />
         </NotFoundLink>
 
-        {/* ✅ Only valid route */}
-        <IconButton visual="solid" icon={<CollectionIcon />} />
+        <Link href="/">
+          <IconButton visual="solid" icon={<CollectionIcon />} />
+        </Link>
 
         <NotFoundLink>
           <IconButton visual="solid" icon={<StackIcon />} />
@@ -46,7 +48,6 @@ const Sidebar = () => {
           <IconButton visual="solid" icon={<PaperRocketIcon />} />
         </NotFoundLink>
       </nav>
-
       <div className={css({ display: "flex", flexDirection: "column", gap: "1.875rem" })}>
         <NotFoundLink>
           <IconButton visual="solid" icon={<AgentIcon />} />

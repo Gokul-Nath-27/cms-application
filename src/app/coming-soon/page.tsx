@@ -14,11 +14,9 @@ export default function ComingSoon() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'black',
-        color: 'white',
         paddingLeft: '4',
         paddingRight: '4',
-        height: '100vh',
+        height: '100%'
       })}
     >
       <div className={css({ textAlign: 'center', maxWidth: 'lg' })}>
