@@ -8,6 +8,7 @@ const Header = () => {
     <header className={css({
       display: 'flex',
       justifyContent: 'space-between',
+      marginBottom: '11px',
     })}>
       <Headings />
       <Controls />

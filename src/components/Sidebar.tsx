@@ -26,7 +26,7 @@ const Sidebar = () => {
         paddingBlock: "4rem 2.5rem ",
       })}
     >
-      <nav className={css({ display: "flex", flexDirection: "column", gap: "2.5rem" })}>
+      <nav className={css({ display: "flex", flexDirection: "column", gap: "1.6rem" })}>
         <NotFoundLink>
           <IconButton visual="solid" icon={<SearchIcon />} />
         </NotFoundLink>

@@ -1,4 +1,4 @@
-import { cva } from '../../../styled-system/css'
+import { cva, cx } from '../../../styled-system/css'
 import React from 'react'
 
 type IconButtonProps = {
@@ -14,13 +14,26 @@ export const button = cva({
     justifyContent: 'center',
     color: 'inherit',
     cursor: 'pointer',
+    transition: 'background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out',
   },
   variants: {
     visual: {
-      solid: {},
-      outline: {
-        border: '1px solid #DBDBDB', padding: '.8125rem',
+      solid: {
+        backgroundColor: 'transparent',
+        padding: '.6rem',
         borderRadius: '.625rem',
+        _hover: {
+          backgroundColor: 'gray.200',
+        },
+      },
+      outline: {
+        padding: '.8125rem',
+        border: '1px solid #DBDBDB',
+        borderRadius: '.625rem',
+        _hover: {
+          backgroundColor: 'gray.100',
+          borderColor: 'gray.400',
+        },
       }
     },
   },
@@ -30,11 +43,10 @@ export const button = cva({
 })
 
 
-const IconButton = ({ visual = 'solid', icon, ...props }: IconButtonProps) => {
+const IconButton = ({ visual = 'solid', icon, className, ...props }: IconButtonProps) => {
   return (
-
     <button
-      className={button({ visual })}
+      className={cx(button({ visual }), className)}
       {...props}
     >
       {icon}

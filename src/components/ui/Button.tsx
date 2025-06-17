@@ -26,17 +26,16 @@ export const buttonRecipe = cva({
       },
       outline: {
         backgroundColor: 'transparent',
-        color: 'var(--foreground)', // Using the --foreground CSS variable for text color
-        borderColor: 'hsl(0, 0%, 86%)', // Light gray border, similar to the image
-        // _hover: {
-        //   backgroundColor: 'gray.100', // Light gray background on hover
-        //   borderColor: 'gray.400',
-        // },
+        color: 'var(--foreground)',
+        border: '1px solid hsl(0, 0%, 86%)',
+        _hover: {
+          backgroundColor: 'gray.100',
+          borderColor: 'gray.400',
+        },
       },
     },
   },
 
-  // Default variant if none is specified
   defaultVariants: {
     variant: 'solid',
   },
