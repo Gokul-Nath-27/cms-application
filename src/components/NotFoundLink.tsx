@@ -6,7 +6,7 @@ type NotFoundLinkProps = {
 
 export const NotFoundLink = ({ children }: NotFoundLinkProps) => {
   return (
-    <Link href="/coming-soon">
+    <Link href="/coming-soon" tabIndex={-1}>
       {children}
     </Link>
   );

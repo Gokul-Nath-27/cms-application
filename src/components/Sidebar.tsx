@@ -31,7 +31,7 @@ const Sidebar = () => {
           <IconButton visual="solid" icon={<SearchIcon />} />
         </NotFoundLink>
 
-        <Link href="/">
+        <Link href="/" tabIndex={-1}>
           <IconButton visual="solid" icon={<CollectionIcon />} />
         </Link>
 
