@@ -12,6 +12,7 @@ import {
   CollectionIcon,
 } from "@/Icons";
 import { NotFoundLink } from "@/components/NotFoundLink";
+import { MOBILE_NAV_HEIGHT } from "@/app/layout";
 
 const Sidebar = () => {
   return (
@@ -23,14 +24,15 @@ const Sidebar = () => {
         justifyContent: { base: 'center', md: 'space-between' },
         alignItems: "center",
         gap: "2.5rem",
-        paddingBlock: { base: "3", md: "4rem 2.5rem" },
+        paddingBlock: { base: 0, md: "4rem 2.5rem" },
         position: { base: "absolute", md: "static" },
         bottom: 0,
         width: { base: "100%", md: "auto" },
-        background: { base: 'var(--background)', md: 'transparent' }
+        background: { base: 'var(--background)', md: 'transparent' },
+
       })}
     >
-      <nav className={css({ display: "flex", flexDirection: { base: "row", md: "column" }, gap: "1.6rem" })}>
+      <nav className={css({ display: "flex", flexDirection: { base: "row", md: "column" }, gap: "1.6rem", height: { base: MOBILE_NAV_HEIGHT, md: "auto" } })}>
         <NotFoundLink className={css({ display: { base: 'none', md: 'inline' } })}>
           <IconButton visual="solid" icon={<SearchIcon />} />
         </NotFoundLink>

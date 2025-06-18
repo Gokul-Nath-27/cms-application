@@ -27,7 +27,7 @@ const CollectionGrid = () => {
       overflow: 'auto',
       scrollbarWidth: '0',
       height: '100%',
-      paddingBlockEnd: '10'
+      paddingBlockEnd: { base: '0', md: '10' },
     })}>
       <AnimatePresence>
         {filteredCollections.length > 0 ? (

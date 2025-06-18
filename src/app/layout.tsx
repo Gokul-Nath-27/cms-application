@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import { css } from "../../styled-system/css"
+export const MOBILE_NAV_HEIGHT = 54
 
 export const gilroyBold = localFont({
   src: '../fonts/Gilroy-Bold.ttf',
@@ -42,7 +43,7 @@ export default function RootLayout({
         <div
           className={css({
             display: "flex",
-            height: "100dvh",
+            height: { base: `calc(100dvh - ${MOBILE_NAV_HEIGHT}px)`, md: '100dvh' },
           })}
         >
           <Sidebar />

@@ -54,10 +54,11 @@ function SaveBanner() {
     <div className={css({
       display: 'flex',
       alignItems: 'center',
+      justifyContent: { base: 'space-between', md: 'flex-end' },
       gap: '3',
-      marginBlockEnd: '3.5625rem',
+      marginBlockEnd: { base: 0, md: '3.5625rem' },
     })}>
-      <p className={css({ color: "#717274", fontSize: "xs", maxWidth: '15.875rem', textAlign: "end" })}>All changes made to this section will reflect for all users in the content hub.</p>
+      <p className={css({ color: "#717274", fontSize: "xs", maxWidth: '15.875rem', textAlign: { base: "start", md: "end" } })}>All changes made to this section will reflect for all users in the content hub.</p>
       <div className={css({
         display: 'flex',
         alignItems: 'center',
