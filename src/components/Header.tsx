@@ -1,7 +1,6 @@
 import { css } from "../../styled-system/css"
 import ActionButtons from "./ActionButtons"
 import SearchBar from "./Searchbar"
-import Button from "./ui/Button"
 
 const Header = () => {
   return (

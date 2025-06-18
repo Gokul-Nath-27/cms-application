@@ -24,7 +24,7 @@ export default function ComingSoon() {
           🚧 Coming Soon
         </h1>
         <p className={css({ fontSize: 'lg', lineHeight: 'lg', marginBottom: '6' })}>
-          We're working on this section. Stay tuned for something awesome!
+          {"We're working on this section. Stay tuned for something awesome!"}
         </p>
         <Link
           href="/"

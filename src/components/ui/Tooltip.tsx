@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
-import { css } from '../../../styled-system/css'
+import { css, cx } from '../../../styled-system/css'
 
 function TooltipProvider({ delayDuration = 0, ...props }: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
   return <TooltipPrimitive.Provider data-slot="tooltip-provider" delayDuration={delayDuration} {...props} />
@@ -32,7 +32,7 @@ function TooltipContent({
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         className={
-          css({
+          cx(css({
             zIndex: '50',
             width: 'fit',
             borderRadius: 'md',
@@ -42,7 +42,7 @@ function TooltipContent({
             paddingBottom: '1.5',
             fontSize: 'xs',
             lineHeight: 'xs',
-          })}
+          }), className)}
         {...props}
       >
         {children}
