@@ -49,12 +49,19 @@ const Sidebar = () => {
       <nav className={css({ display: "flex", flexDirection: { base: "row", md: "column" }, gap: "1.6rem", height: { base: '100%', md: "auto" } })}>
         {navLinks.map((link) => {
           const isCollection = link.name === "Collection";
+          const isSearch = link.name === "Search";
           const LinkComponent = isCollection ? Link : NotFoundLink;
           const href = isCollection ? "/" : "/coming-soon";
 
           return (
             <TooltipWrapper content={link.name} side="top" key={link.name}>
-              <LinkComponent href={href} tabIndex={-1}>
+              <LinkComponent
+                href={href}
+                tabIndex={-1}
+                className={css({
+                  ...(isSearch && { display: { base: 'none', md: 'flex' } }),
+                })}
+              >
                 <IconButton visual="solid" icon={link.icon} />
               </LinkComponent>
             </TooltipWrapper>
