@@ -10,6 +10,10 @@ export const buttonRecipe = cva({
     fontSize: '.75rem',
     padding: '.75rem .7813rem',
     transition: 'background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out',
+    _focusVisible: {
+      outline: 'none',
+      boxShadow: '0 0 0 2px hsla(340, 87%, 58%, 0.3)',
+    },
   },
 
   variants: {
