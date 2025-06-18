@@ -48,7 +48,7 @@ const Sidebar = () => {
           <IconButton visual="solid" icon={<PaperRocketIcon />} />
         </NotFoundLink>
       </nav>
-      <div className={css({ display: "flex", flexDirection: "column", gap: "1.875rem" })}>
+      <div className={css({ display: "flex", flexDirection: "column", gap: "4" })}>
         <NotFoundLink>
           <IconButton visual="solid" icon={<AgentIcon />} />
         </NotFoundLink>

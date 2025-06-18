@@ -1,6 +1,8 @@
+"use client"
 import Image from "next/image";
 import { css } from "../../styled-system/css";
 import { CollectionItem } from "@/data/mockData";
+import { useCollectionsActions, useIsEditing } from "@/store/collectionStore";
 
 const toBase64 = (str: string) =>
   typeof window === "undefined"
@@ -22,6 +24,7 @@ const shimmer = (w: number, h: number) => `
 </svg>`;
 
 const Card = ({ item }: { item: CollectionItem }) => {
+  const { setEditing } = useCollectionsActions()
   return (
     <div className={css({ display: "flex", flexDirection: "column", gap: 3, maxHeight: '18.75rem' })}>
       <div className={css({
@@ -48,7 +51,17 @@ const Card = ({ item }: { item: CollectionItem }) => {
         />
       </div>
       <div className={css({ display: "flex", flexDirection: "column", gap: "2px", paddingInlineStart: '1.5' })}>
-        <div className={css({ fontSize: "14px", fontWeight: "bold", cursor: 'pointer', _hover: { textDecoration: 'underline' } })}>{item.title}</div>
+        <div
+          className={css({
+            fontSize: "14px",
+            fontWeight: "bold",
+            cursor: 'pointer',
+            _hover: { textDecoration: 'underline' }
+          })}
+          onClick={() => setEditing(true)}
+        >
+          {item.title}
+        </div>
         <div className={css({ fontSize: "12px", color: 'var(--text-forground)' })}>{`${item.numberOfItems} items`}</div>
       </div>
     </div>

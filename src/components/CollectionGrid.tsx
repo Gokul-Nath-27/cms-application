@@ -33,17 +33,42 @@ const CollectionGrid = () => {
       paddingBlockEnd: '10'
     })}>
       <AnimatePresence>
-        {filteredCollections.map((item) => (
-          <motion.div
-            key={item.title}
-            layout
-          >
-            <Card key={item.title} item={item} />
-          </motion.div>
-        ))}
+        {filteredCollections.length > 0 ? (
+          filteredCollections.map((item) => (
+            <motion.div
+              key={item.title}
+              layout
+            >
+              <Card key={item.title} item={item} />
+            </motion.div>
+          ))
+        ) : (
+          <NoCollectionFound />
+        )}
       </AnimatePresence>
     </motion.div>
   )
 }
 
 export default CollectionGrid
+
+const NoCollectionFound = () => {
+  return (
+    <div
+      className={css({
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gridColumn: '1 / -1',
+      })}
+    >
+      <p className={css({ fontSize: 'lg', fontWeight: 'medium' })}>
+        No collections found
+      </p>
+      <p className={css({ fontSize: 'sm', color: 'gray.500' })}>
+        Try adjusting your filters or search term.
+      </p>
+    </div>
+  )
+}

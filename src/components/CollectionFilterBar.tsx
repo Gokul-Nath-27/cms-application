@@ -48,8 +48,17 @@ const SortMenu = () => {
         <div>
           <p className={css({ fontSize: '10px', textAlign: 'end' })}>Sort By</p>
           <div className={css({ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'not-allowed' })}>
-            <p className={css({ fontWeight: 500, fontSize: '.75rem' })}>Created date</p>
-            <div className={css({ display: 'flex', flexDirection: 'column' })}>
+            <p className={css({
+              fontWeight: 500,
+              fontSize: '.75rem',
+              minWidth: 'fit-content !important',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            })}
+            >
+              Created date
+            </p>
+            <div className={css({ display: 'flex', flexDirection: 'column', flexShrink: 0 })}>
               <CheveronDownIcon size={8} className={css({ transform: 'rotate(180deg)' })} color="#E51058" />
               <CheveronDownIcon size={8} />
             </div>

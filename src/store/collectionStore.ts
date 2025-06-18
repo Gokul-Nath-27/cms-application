@@ -8,6 +8,7 @@ interface Collections {
     setCollections: (collections: CollectionItem[]) => void;
     setEditing: (isEditing: boolean) => void;
     saveRenameCollection: (collections: CollectionItem[]) => void;
+    cancelRenameCollection: () => void;
   };
 }
 
