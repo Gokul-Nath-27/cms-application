@@ -2,6 +2,7 @@ import { AgentIcon, SearchIcon } from '@/Icons'
 import { css } from '../../styled-system/css'
 import IconButton from './ui/IconButton'
 import SearchInput from './SearchInput'
+import TooltipWrapper from './ui/Tooltip'
 
 const SearchBar = () => {
   return (
@@ -25,7 +26,9 @@ const SearchBar = () => {
           color='#717274'
         />
       </div>
-      <IconButton visual='outline' icon={<AgentIcon size={14} />} />
+      <TooltipWrapper content="Search" side="top">
+        <IconButton visual='outline' icon={<AgentIcon size={14} />} />
+      </TooltipWrapper>
     </div>
   )
 }

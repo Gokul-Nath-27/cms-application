@@ -1,62 +1,88 @@
-'use client'
+"use client";
+import * as React from "react";
+import * as Tooltip from "@radix-ui/react-tooltip";
+import { css, cx } from '../../../styled-system/css';
 
-import * as React from 'react'
-import * as TooltipPrimitive from '@radix-ui/react-tooltip'
-import { css, cx } from '../../../styled-system/css'
+const tooltipStyles = css({
+  borderRadius: '6px',
+  padding: '6px 8px',
+  fontSize: '12px',
+  fontWeight: '500',
+  lineHeight: '1.4',
+  letterSpacing: '0.01em',
+  color: 'white',
+  backgroundColor: 'rgba(0, 0, 0, 0.9)',
+  backdropFilter: 'blur(8px)',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  userSelect: 'none',
+  wordWrap: 'break-word',
+  animationDuration: '500ms',
+  animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+  willChange: 'transform, opacity',
+  zIndex: 50,
 
-function TooltipProvider({ delayDuration = 0, ...props }: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
-  return <TooltipPrimitive.Provider data-slot="tooltip-provider" delayDuration={delayDuration} {...props} />
-}
+  '&[data-state="delayed-open"][data-side="top"]': {
+    animationName: 'slideDownAndFade',
+  },
 
-function Tooltip({ ...props }: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return (
-    <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
-    </TooltipProvider>
-  )
-}
+  '&[data-state="delayed-open"][data-side="right"]': {
+    animationName: 'slideLeftAndFade',
+  },
 
-function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
-}
+  '&[data-state="delayed-open"][data-side="bottom"]': {
+    animationName: 'slideUpAndFade',
+  },
 
-function TooltipContent({
-  className,
-  sideOffset = 0,
+  '&[data-state="delayed-open"][data-side="left"]': {
+    animationName: 'slideRightAndFade',
+  },
+});
+
+const tooltipArrowStyles = css({
+  fill: 'rgba(0, 0, 0, 0.9)',
+  width: '8px',
+  height: '4px',
+});
+
+type TooltipWrapperProps = {
+  children: React.ReactNode;
+  content: string;
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  sideOffset?: number;
+  className?: string;
+  delayDuration?: number;
+};
+
+const TooltipWrapper = ({
   children,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
+  content,
+  side = 'right',
+  sideOffset = 8,
+  className,
+  delayDuration = 500
+}: TooltipWrapperProps) => {
   return (
-    <TooltipPrimitive.Portal>
-      <TooltipPrimitive.Content
-        data-slot="tooltip-content"
-        sideOffset={sideOffset}
-        className={
-          cx(css({
-            zIndex: '50',
-            width: 'fit',
-            borderRadius: 'md',
-            paddingLeft: '3',
-            paddingRight: '3',
-            paddingTop: '1.5',
-            paddingBottom: '1.5',
-            fontSize: 'xs',
-            lineHeight: 'xs',
-          }), className)}
-        {...props}
-      >
-        {children}
-        <TooltipPrimitive.Arrow
-          className={css({
-            zIndex: '50',
-            transform:
-              'translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))',
-            borderRadius: '2px',
-          })}
-        />
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Portal>
-  )
-}
+    <Tooltip.Provider delayDuration={delayDuration}>
+      <Tooltip.Root>
+        <Tooltip.Trigger asChild>
+          <div>
+            {children}
+          </div>
+        </Tooltip.Trigger>
+        <Tooltip.Portal>
+          <Tooltip.Content
+            className={cx(tooltipStyles, className)}
+            sideOffset={sideOffset}
+            side={side}
+            collisionPadding={8}
+          >
+            {content}
+            <Tooltip.Arrow className={tooltipArrowStyles} />
+          </Tooltip.Content>
+        </Tooltip.Portal>
+      </Tooltip.Root>
+    </Tooltip.Provider>
+  );
+};
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+export default TooltipWrapper;

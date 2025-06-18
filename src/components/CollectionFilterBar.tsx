@@ -5,6 +5,7 @@ import Button from "./ui/Button"
 import AddCollectionIcon from "@/Icons/AddCollectionIcon"
 import { CheveronDownIcon, SortIcon } from "@/Icons"
 import { useTabActions, useActiveTab, tabs } from "@/store/tabNavigation"
+import TooltipWrapper from "./ui/Tooltip"
 
 const CollectionFilterBar = () => {
   const activeTab = useActiveTab()
@@ -13,11 +14,13 @@ const CollectionFilterBar = () => {
   return (
     <div className={css({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBlockEnd: { base: 2, md: 4 } })}>
       <div className={css({ display: 'flex', alignItems: 'center', gap: '2', padding: "11px 0" })}>
-        <IconButton
-          visual='outline'
-          icon={<AddCollectionIcon size={14} />}
-          className={css({ borderStyle: 'dashed', borderRadius: "full !important", display: { base: 'none', md: 'flex' } })}
-        />
+        <TooltipWrapper content="Create a new collection" side="top">
+          <IconButton
+            visual='outline'
+            icon={<AddCollectionIcon size={14} />}
+            className={css({ borderStyle: 'dashed', borderRadius: "full !important", display: { base: 'none', md: 'flex' } })}
+          />
+        </TooltipWrapper>
         {tabs.map((tab) => (
           <Button
             onClick={() => setActiveTab(tab)}
@@ -67,7 +70,9 @@ const SortMenu = () => {
             </div>
           </div>
         </div>
-        <IconButton visual="outline" icon={<SortIcon size={14} />} className={css({ display: { base: 'none', md: 'flex' } })} />
+        <TooltipWrapper content="Sort" side="top">
+          <IconButton visual="outline" icon={<SortIcon size={14} />} className={css({ display: { base: 'none', md: 'flex' } })} />
+        </TooltipWrapper>
       </div>
     </div>
   );
