@@ -42,7 +42,7 @@ export const buttonRecipe = cva({
 });
 
 type ButtonProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variant?: 'solid' | 'outline';
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 

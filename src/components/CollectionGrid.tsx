@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useActiveTab } from "@/store/tabNavigation";
 import { css } from "../../styled-system/css"
 import Card from "./Card"
-import { useCollections } from "@/store/collections";
+import { useCollections } from "@/store/collectionStore";
 import { useMemo } from "react";
 import { useSearch } from "@/store/search";
 
@@ -23,12 +23,14 @@ const CollectionGrid = () => {
   }, [collections, activeTab, searchTerm])
 
   return (
-    <motion.div layout className={css({
+    <motion.div className={css({
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(284px, 1fr))',
       gap: '27px',
       overflow: 'auto',
       scrollbarWidth: '0',
+      height: '100%',
+      paddingBlockEnd: '10'
     })}>
       <AnimatePresence>
         {filteredCollections.map((item) => (

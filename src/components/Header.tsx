@@ -1,6 +1,5 @@
 import { css } from "../../styled-system/css"
-import ActionButtons from "./ActionButtons"
-import SearchBar from "./Searchbar"
+import Controls from "./Controls"
 
 const Header = () => {
   return (
@@ -9,52 +8,31 @@ const Header = () => {
       justifyContent: 'space-between',
       marginBottom: '11px',
     })}>
-      <Headings />
+      <div className={css({
+        display: 'flex',
+        flexDirection: 'column',
+      })}>
+        <h1
+          className={css({
+            fontSize: '2rem',
+            lineHeight: '2.2rem',
+          })}
+        >
+          collections
+        </h1>
+        <p
+          className={css({
+            color: '#717274',
+            fontSize: '1rem',
+            fontWeight: 'medium',
+          })}
+        >
+          personalized content storyboards
+        </p>
+      </div>
       <Controls />
     </header >
   )
 }
 
-
 export default Header
-
-const Headings = () => {
-  return (
-    <div className={css({
-      display: 'flex',
-      flexDirection: 'column',
-    })}>
-      <h1
-        className={css({
-          fontSize: '2rem',
-          lineHeight: '2.2rem',
-        })}
-      >
-        collections
-      </h1>
-      <p
-        className={css({
-          color: '#717274',
-          fontSize: '1rem',
-          fontWeight: 'medium',
-        })}
-      >
-        personalized content storyboards
-      </p>
-    </div>
-  )
-}
-
-const Controls = () => {
-  return (
-    <div className={css({
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '10px',
-      alignItems: 'center',
-    })}>
-      <SearchBar />
-      <ActionButtons />
-    </div>
-  );
-};

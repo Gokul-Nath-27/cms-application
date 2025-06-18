@@ -23,7 +23,7 @@ const shimmer = (w: number, h: number) => `
 
 const Card = ({ item }: { item: CollectionItem }) => {
   return (
-    <div className={css({ display: "flex", flexDirection: "column", gap: 3 })}>
+    <div className={css({ display: "flex", flexDirection: "column", gap: 3, maxHeight: '18.75rem' })}>
       <div className={css({
         borderRadius: "10px",
         overflow: "hidden",
