@@ -2,6 +2,7 @@
 import * as React from "react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { css, cx } from '../../../styled-system/css';
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const tooltipStyles = css({
   borderRadius: '6px',
@@ -20,11 +21,6 @@ const tooltipStyles = css({
   animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
   willChange: 'transform, opacity',
   zIndex: 50,
-
-  '@media (hover: none) and (pointer: coarse)': {
-    display: 'none !important',
-  },
-
 
   '&[data-state="delayed-open"][data-side="top"]': {
     animationName: 'slideDownAndFade',
@@ -66,6 +62,8 @@ const TooltipWrapper = ({
   className,
   delayDuration = 500
 }: TooltipWrapperProps) => {
+  const isMobile = useIsMobile()
+  if (isMobile) return children
   return (
     <Tooltip.Provider delayDuration={delayDuration}>
       <Tooltip.Root>
