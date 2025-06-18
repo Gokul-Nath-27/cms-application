@@ -11,7 +11,7 @@ const CollectionFilterBar = () => {
   const { setActiveTab } = useTabActions()
 
   return (
-    <div className={css({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBlockEnd: 4 })}>
+    <div className={css({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBlockEnd: { base: 2, md: 4 } })}>
       <div className={css({ display: 'flex', alignItems: 'center', gap: '2', padding: "11px 0" })}>
         <IconButton
           visual='outline'
@@ -35,6 +35,9 @@ const CollectionFilterBar = () => {
   )
 }
 
+export default CollectionFilterBar
+
+// Helper Components
 const SortMenu = () => {
   return (
     <div className={css({ display: 'flex', alignItems: 'center', gap: '2', padding: '11px 0' })}>
@@ -69,5 +72,3 @@ const SortMenu = () => {
     </div>
   );
 };
-
-export default CollectionFilterBar

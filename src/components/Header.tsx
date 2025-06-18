@@ -6,9 +6,9 @@ const Header = () => {
     <header className={css({
       display: 'flex',
       justifyContent: 'space-between',
-      marginBottom: '11px',
+      marginBottom: { base: 0, md: '11px' },
       flexDirection: { base: 'column', md: 'row' },
-      gap: { base: '2', md: '0' },
+      gap: { base: '3', md: '0' },
     })}>
       <div className={css({
         display: 'flex',

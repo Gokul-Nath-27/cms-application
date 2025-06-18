@@ -26,13 +26,13 @@ const Sidebar = () => {
         gap: "2.5rem",
         paddingBlock: { base: 0, md: "4rem 2.5rem" },
         position: { base: "absolute", md: "static" },
-        bottom: 0,
+        bottom: 3,
         width: { base: "100%", md: "auto" },
         background: { base: 'var(--background)', md: 'transparent' },
-
+        height: { base: MOBILE_NAV_HEIGHT, md: "auto" }
       })}
     >
-      <nav className={css({ display: "flex", flexDirection: { base: "row", md: "column" }, gap: "1.6rem", height: { base: MOBILE_NAV_HEIGHT, md: "auto" } })}>
+      <nav className={css({ display: "flex", flexDirection: { base: "row", md: "column" }, gap: "1.6rem", height: { base: '100%', md: "auto" } })}>
         <NotFoundLink className={css({ display: { base: 'none', md: 'inline' } })}>
           <IconButton visual="solid" icon={<SearchIcon />} />
         </NotFoundLink>

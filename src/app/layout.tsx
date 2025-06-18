@@ -51,7 +51,7 @@ export default function RootLayout({
             flex: 1,
             margin: "0.5rem 0.5rem 0.5rem 0",
             backgroundColor: "white",
-            padding: { base: '6', md: '2.5rem 2.5rem 0 2.5rem' },
+            padding: { base: '1.5em 1rem', md: '2.5rem 2.5rem 0 2.5rem' },
             borderRadius: '1.25rem',
             marginInlineStart: { base: '0.5rem', md: '0' },
           })}>

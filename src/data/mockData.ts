@@ -87,6 +87,7 @@ export const mockCollections: CollectionItem[] = [
   },
 ];
 
+// Future Enhancement
 export type GroupedCollections = {
   [key in keyof typeof mediaTypes]?: CollectionItem[];
 };
