@@ -7,6 +7,8 @@ const Header = () => {
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '11px',
+      flexDirection: { base: 'column', md: 'row' },
+      gap: { base: '2', md: '0' },
     })}>
       <div className={css({
         display: 'flex',

@@ -5,7 +5,7 @@ import Button from "./ui/Button"
 
 const ActionButtons = () => {
   return (
-    <div className={css({ display: 'flex', alignItems: 'center', gap: '2.5' })}>
+    <div className={css({ display: { base: 'none', md: 'flex' }, alignItems: 'center', gap: '2.5' })}>
       <IconButton
         visual='outline'
         icon={<FontIcon />}

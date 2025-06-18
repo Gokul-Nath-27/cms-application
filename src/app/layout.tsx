@@ -42,7 +42,7 @@ export default function RootLayout({
         <div
           className={css({
             display: "flex",
-            height: "100vh",
+            height: "100dvh",
           })}
         >
           <Sidebar />
@@ -50,8 +50,9 @@ export default function RootLayout({
             flex: 1,
             margin: "0.5rem 0.5rem 0.5rem 0",
             backgroundColor: "white",
-            padding: '2.5rem 2.5rem 0 2.5rem',
+            padding: { base: '6', md: '2.5rem 2.5rem 0 2.5rem' },
             borderRadius: '1.25rem',
+            marginInlineStart: { base: '0.5rem', md: '0' },
           })}>
             {children}
           </main>

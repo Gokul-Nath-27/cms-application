@@ -16,7 +16,7 @@ const CollectionFilterBar = () => {
         <IconButton
           visual='outline'
           icon={<AddCollectionIcon size={14} />}
-          className={css({ borderStyle: 'dashed', borderRadius: "full !important" })}
+          className={css({ borderStyle: 'dashed', borderRadius: "full !important", display: { base: 'none', md: 'flex' } })}
         />
         {tabs.map((tab) => (
           <Button
@@ -45,7 +45,7 @@ const SortMenu = () => {
           gap: 2,
         })}
       >
-        <div>
+        <div className={css({ display: { base: 'none', md: 'block' } })}>
           <p className={css({ fontSize: '10px', textAlign: 'end' })}>Sort By</p>
           <div className={css({ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'not-allowed' })}>
             <p className={css({
