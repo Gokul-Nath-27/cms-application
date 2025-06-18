@@ -2,29 +2,20 @@
 import Image from "next/image";
 import { css } from "../../styled-system/css";
 import { CollectionItem } from "@/data/mockData";
-import { useCollectionsActions } from "@/store/collectionStore";
-
-const toBase64 = (str: string) =>
-  typeof window === "undefined"
-    ? Buffer.from(str).toString("base64")
-    : window.btoa(str);
-
-const shimmer = (w: number, h: number) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#f6f7f8" offset="20%" />
-      <stop stop-color="#edeef1" offset="50%" />
-      <stop stop-color="#f6f7f8" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#f6f7f8" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1.2s" repeatCount="indefinite" />
-</svg>`;
+import { useCollectionsActions, useIsEditing } from "@/store/collectionStore";
+import { toBase64, shimmer } from "@/lib/utils";
 
 const Card = ({ item }: { item: CollectionItem }) => {
-  const { setEditing } = useCollectionsActions()
+  const { setEditing, renameCollection, saveRenameCollection } = useCollectionsActions()
+  const isEditing = useIsEditing()
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+      e.preventDefault();
+      saveRenameCollection();
+    }
+  }
+
   return (
     <div className={css({ display: "flex", flexDirection: "column", gap: 3, maxHeight: '18.75rem' })}>
       <div className={css({
@@ -50,20 +41,36 @@ const Card = ({ item }: { item: CollectionItem }) => {
           blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 200))}`}
         />
       </div>
-      <div className={css({ display: "flex", flexDirection: "column", gap: "2px", paddingInlineStart: '1.5' })}>
-        <div
+      {isEditing
+        ? <input
           className={css({
-            fontSize: "14px",
-            fontWeight: "bold",
-            cursor: 'pointer',
-            _hover: { textDecoration: 'underline' }
+            border: 'none',
+            borderBottom: '1px solid #ccc',
+            outline: 'none',
+            marginInline: '1.5',
+            _focus: {
+              borderBottomColor: 'hsla(340, 87%, 58%, 0.4)'
+            }
           })}
-          onClick={() => setEditing(true)}
-        >
-          {item.title}
+          value={item.title}
+          onChange={(e) => renameCollection(item.id, e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        : <div className={css({ display: "flex", flexDirection: "column", gap: "2px", paddingInlineStart: '1.5' })}>
+          <div
+            className={css({
+              fontSize: "14px",
+              fontWeight: "bold",
+              cursor: 'pointer',
+              _hover: { textDecoration: 'underline' }
+            })}
+            onClick={() => setEditing(true)}
+          >
+            {item.title}
+          </div>
+          <div className={css({ fontSize: "12px", color: 'var(--text-forground)' })}>{`${item.numberOfItems} items`}</div>
         </div>
-        <div className={css({ fontSize: "12px", color: 'var(--text-forground)' })}>{`${item.numberOfItems} items`}</div>
-      </div>
+      }
     </div>
   );
 };

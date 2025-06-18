@@ -38,7 +38,7 @@ export default function RootLayout({
       lang="en"
       className={`${gilroyBold.variable} ${gilroyMedium.variable} ${gilroyRegular.variable}`}
     >
-      <body>
+      <body suppressHydrationWarning={true}>
         <div
           className={css({
             display: "flex",

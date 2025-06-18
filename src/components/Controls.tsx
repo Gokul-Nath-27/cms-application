@@ -49,7 +49,7 @@ export default Controls
 
 // Helper Components
 function SaveBanner() {
-  const { cancelRenameCollection } = useCollectionsActions()
+  const { cancelRenameCollection, saveRenameCollection } = useCollectionsActions()
   return (
     <div className={css({
       display: 'flex',
@@ -63,7 +63,7 @@ function SaveBanner() {
         alignItems: 'center',
         gap: '2',
       })}>
-        <Button variant="solid" className={css({ fontWeight: 500 })}>
+        <Button variant="solid" className={css({ fontWeight: 500 })} onClick={() => saveRenameCollection()}>
           <span className={css({ display: 'flex', alignItems: 'center', gap: '1.5' })}>
             <TickIcon />
             <p>Save</p>

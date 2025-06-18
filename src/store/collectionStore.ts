@@ -7,20 +7,29 @@ interface Collections {
   actions: {
     setCollections: (collections: CollectionItem[]) => void;
     setEditing: (isEditing: boolean) => void;
-    saveRenameCollection: (collections: CollectionItem[]) => void;
+    saveRenameCollection: () => void;
     cancelRenameCollection: () => void;
+    renameCollection: (id: number, newTitle: string) => void;
   };
 }
 
-const useCollectionsStore = create<Collections>((set) => ({
+const useCollectionsStore = create<Collections>((set, get) => ({
   collections: mockCollections,
   isEditing: false,
   actions: {
     setCollections: (collections) => set({ collections }),
     setEditing: (isEditing) => set({ isEditing }),
-    saveRenameCollection: (collections) => {
-      localStorage.setItem('collections', JSON.stringify(collections));
-      set({ collections });
+    renameCollection: (id, newTitle) => {
+      set((state) => ({
+        collections: state.collections.map((collection) =>
+          collection.id === id ? { ...collection, title: newTitle } : collection
+        ),
+      }));
+    },
+    saveRenameCollection: () => {
+      const currentCollections = get().collections;
+      localStorage.setItem('collections', JSON.stringify(currentCollections));
+      set({ isEditing: false });
     },
     cancelRenameCollection: () => {
       set({ isEditing: false });

@@ -16,17 +16,14 @@ const CollectionGrid = () => {
   const filteredCollections = useMemo(() => {
     return collections
       .filter((item) => activeTab.type === 'all' || item.type === activeTab.type)
-      .filter((item) => {
-        console.log(item.title.toLowerCase())
-        return item.title.toLowerCase().includes(searchTerm.toLowerCase())
-      })
+      .filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
   }, [collections, activeTab, searchTerm])
 
   return (
     <motion.div className={css({
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(284px, 1fr))',
-      gap: '27px',
+      gap: '1.6875rem',
       overflow: 'auto',
       scrollbarWidth: '0',
       height: '100%',
@@ -36,10 +33,10 @@ const CollectionGrid = () => {
         {filteredCollections.length > 0 ? (
           filteredCollections.map((item) => (
             <motion.div
-              key={item.title}
+              key={item.id}
               layout
             >
-              <Card key={item.title} item={item} />
+              <Card item={item} />
             </motion.div>
           ))
         ) : (
