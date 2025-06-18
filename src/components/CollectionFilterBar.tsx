@@ -64,7 +64,7 @@ const SortMenu = () => {
             </div>
           </div>
         </div>
-        <IconButton visual="outline" icon={<SortIcon size={14} />} />
+        <IconButton visual="outline" icon={<SortIcon size={14} />} className={css({ display: { base: 'none', md: 'flex' } })} />
       </div>
     </div>
   );
