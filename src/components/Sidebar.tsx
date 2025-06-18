@@ -14,6 +14,19 @@ import {
 import { NotFoundLink } from "@/components/NotFoundLink";
 import { MOBILE_NAV_HEIGHT } from "@/app/layout";
 import TooltipWrapper from "./ui/Tooltip";
+const navLinks = [
+  { name: "Search", icon: <SearchIcon /> },
+  { name: "Collection", icon: <CollectionIcon /> },
+  { name: "Stack", icon: <StackIcon /> },
+  { name: "Messages", icon: <MessageIcon /> },
+  { name: "Analytics", href: "/coming", icon: <AnalyticsIcon /> },
+  { name: "Send", icon: <PaperRocketIcon /> },
+]
+
+const bottomNavLinks = [
+  { name: "Agent", icon: <AgentIcon /> },
+  { name: "Menu", icon: <MenuIcon /> },
+]
 
 const Sidebar = () => {
   return (
@@ -34,54 +47,30 @@ const Sidebar = () => {
       })}
     >
       <nav className={css({ display: "flex", flexDirection: { base: "row", md: "column" }, gap: "1.6rem", height: { base: '100%', md: "auto" } })}>
-        <TooltipWrapper content="Search">
-          <NotFoundLink className={css({ display: { base: 'none', md: 'inline' } })}>
-            <IconButton visual="solid" icon={<SearchIcon />} />
-          </NotFoundLink>
-        </TooltipWrapper>
+        {navLinks.map((link) => {
+          const isCollection = link.name === "Collection";
+          const LinkComponent = isCollection ? Link : NotFoundLink;
+          const href = isCollection ? "/" : "/coming-soon";
 
-        <TooltipWrapper content="Collection">
-          <Link href="/" tabIndex={-1}>
-            <IconButton visual="solid" icon={<CollectionIcon />} />
-          </Link>
-        </TooltipWrapper>
-
-        <TooltipWrapper content="Stack">
-          <NotFoundLink>
-            <IconButton visual="solid" icon={<StackIcon />} />
-          </NotFoundLink>
-        </TooltipWrapper>
-
-        <TooltipWrapper content="Messages">
-          <NotFoundLink>
-            <IconButton visual="solid" icon={<MessageIcon />} />
-          </NotFoundLink>
-        </TooltipWrapper>
-
-        <TooltipWrapper content="Analytics">
-          <NotFoundLink>
-            <IconButton visual="solid" icon={<AnalyticsIcon />} />
-          </NotFoundLink>
-        </TooltipWrapper>
-
-        <TooltipWrapper content="Send">
-          <NotFoundLink>
-            <IconButton visual="solid" icon={<PaperRocketIcon />} />
-          </NotFoundLink>
-        </TooltipWrapper>
+          return (
+            <TooltipWrapper content={link.name} side="top" key={link.name}>
+              <LinkComponent href={href} tabIndex={-1}>
+                <IconButton visual="solid" icon={link.icon} />
+              </LinkComponent>
+            </TooltipWrapper>
+          );
+        })}
       </nav>
       <div className={css({ display: { base: 'none', md: 'flex' }, flexDirection: "column", gap: "4" })}>
-        <TooltipWrapper content="Agent">
-          <NotFoundLink>
-            <IconButton visual="solid" icon={<AgentIcon />} />
-          </NotFoundLink>
-        </TooltipWrapper>
-
-        <TooltipWrapper content="Menu">
-          <NotFoundLink>
-            <IconButton visual="solid" icon={<MenuIcon />} />
-          </NotFoundLink>
-        </TooltipWrapper>
+        {bottomNavLinks.map((link) => {
+          return (
+            <TooltipWrapper content={link.name} side="top" key={link.name}>
+              <NotFoundLink>
+                <IconButton visual="solid" icon={link.icon} />
+              </NotFoundLink>
+            </TooltipWrapper>
+          )
+        })}
       </div>
     </div>
   );
