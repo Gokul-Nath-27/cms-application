@@ -21,6 +21,11 @@ const tooltipStyles = css({
   willChange: 'transform, opacity',
   zIndex: 50,
 
+  '@media (hover: none) and (pointer: coarse)': {
+    display: 'none !important',
+  },
+
+
   '&[data-state="delayed-open"][data-side="top"]': {
     animationName: 'slideDownAndFade',
   },
