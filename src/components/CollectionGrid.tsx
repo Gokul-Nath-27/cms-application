@@ -1,5 +1,6 @@
 
 "use client"
+import { motion, AnimatePresence } from "motion/react";
 import { useActiveTab } from "@/store/tabNavigation";
 import { css } from "../../styled-system/css"
 import Card from "./Card"
@@ -22,17 +23,24 @@ const CollectionGrid = () => {
   }, [collections, activeTab, searchTerm])
 
   return (
-    <div className={css({
+    <motion.div layout className={css({
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(284px, 1fr))',
       gap: '27px',
       overflow: 'auto',
-      scrollbarWidth: '0'
+      scrollbarWidth: '0',
     })}>
-      {filteredCollections.map((item) => (
-        <Card key={item.title} item={item} />
-      ))}
-    </div>
+      <AnimatePresence>
+        {filteredCollections.map((item) => (
+          <motion.div
+            key={item.title}
+            layout
+          >
+            <Card key={item.title} item={item} />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </motion.div>
   )
 }
 
