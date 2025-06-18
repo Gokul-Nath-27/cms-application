@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { css } from "../../styled-system/css";
 import { CollectionItem } from "@/data/mockData";
-import { useCollectionsActions, useIsEditing } from "@/store/collectionStore";
+import { useCollectionsActions } from "@/store/collectionStore";
 
 const toBase64 = (str: string) =>
   typeof window === "undefined"
